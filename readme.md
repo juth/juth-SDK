@@ -64,4 +64,4 @@ Before submitting a pull request, please make sure that your changes are properl
 
 ## License
 
-The juth-SDK is licensed under the MIT License.
+The juth-SDK is licensed under the MIT License. See the [LICENSE](https://github.com/juth/juth-SDK/blob/master/LICENSE) file for more information.
