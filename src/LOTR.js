@@ -34,7 +34,7 @@ class LOTR {
      *  @returns {Array} an array of movies
      */
     async getMovies() {
-        return this.movies.findAll();
+        return await this.movies.findAll();
     }
 
     /**
@@ -45,7 +45,7 @@ class LOTR {
      *  @returns {Object} the movie
      */
     async getMovie(id) {
-        return this.movies.findById(id);
+        return await this.movies.findById(id);
     }
 
     /**
@@ -57,7 +57,7 @@ class LOTR {
      *  @returns {Array} an array of quotes
      */
     async getQuotes(movieId) {
-        return (movieId) ? 
+        return await (movieId) ? 
             this.quotes.findByMovieId(movieId) : 
             this.quotes.findAll();
     }
@@ -70,7 +70,7 @@ class LOTR {
      *  @returns {Object} the quote
      */
     async getQuote(id) {
-        return this.quotes.findById(id);
+        return await this.quotes.findById(id);
     }
 }
 
