@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "temp",
-    "client": "node ./client.js"
+    "client": "node ./client.js",
+    "doc": "jsdoc -r src -d doc"
   },
   "repository": {
     "type": "git",

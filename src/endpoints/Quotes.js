@@ -1,5 +1,5 @@
 /**
- *  Endpoint class for One API's /quote endpoint.
+ *  Provides access to One API's /quote endpoint.
  * 
  *  @author  Steve Juth
  */
@@ -8,7 +8,7 @@ class Quotes {
     /**
      *  Creates the /quote endpoint.
      * 
-     *  @param  {OneAPI}  oneAPI 
+     *  @param {OneAPI} oneAPI - the One API repository
      */
     constructor(oneAPI) {
         this.oneAPI = oneAPI;
@@ -17,7 +17,7 @@ class Quotes {
     /**
      *  Returns all of the quotes.
      * 
-     *  @returns  {Array}
+     *  @returns {Array} an array of quotes
      */
     async all() {
         return await this.oneAPI.get('/quote');
@@ -26,9 +26,9 @@ class Quotes {
     /**
      *  Finds a quote by its ID and returns it.
      * 
-     *  @param  {string}  id  the ID of the quote
+     *  @param {string} id - the ID of the quote
      * 
-     *  @returns  {Object}
+     *  @returns {Object} the quote or null if nothing was found
      */
     async get(id) {
         const quotes = await this.oneAPI.get(`/quote/${id}`);

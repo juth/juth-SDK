@@ -3,8 +3,7 @@
 //  retrieving the Lord of the Rings movies and quotes.
 //
 //  Note: For this example, the One API key is stored in
-//  an .env file. Otherwise, it could be added directly
-//  to the LOTR constructor.
+//  an .env file.
 //  ----------------------------------------------------
 
 import LOTR from './src/LOTR.js';
@@ -17,25 +16,36 @@ const ONE_API_KEY = process.env.ONE_API_KEY;
 main();
 
 /**
- *  Main function for testing the SDK
+ *  Main function for testing the SDK.
+ * 
+ *  @returns {void}
  */
 async function main() {
+
+    //  Create an LOTR SDK instance
     const lotr = new LOTR(ONE_API_KEY);
 
-    await getAllMovies(lotr);
-    await getOneMovie(lotr);
-    await getInvalidMovie(lotr);
+    try {
+        await getAllMovies(lotr);
+        await getOneMovie(lotr);
+        await getInvalidMovie(lotr);
 
-    await getFiveQuotes(lotr);
-    await getOneQuote(lotr);
-    await getInvalidQuote(lotr);
-    await getMovieQuotes(lotr);
+        await getFiveQuotes(lotr);
+        await getOneQuote(lotr);
+        await getInvalidQuote(lotr);
+        await getMovieQuotes(lotr);
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
 }
 
 /**
- *  Tests getting all movies
+ *  Tests getting all movies.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ * 
+ *  @returns {void}
  */
 async function getAllMovies(lotr) {
 
@@ -48,9 +58,11 @@ async function getAllMovies(lotr) {
 }
 
 /**
- *  Tests getting a movie
+ *  Tests getting a movie.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
  */
 async function getOneMovie(lotr) {
     
@@ -61,9 +73,11 @@ async function getOneMovie(lotr) {
 }
 
 /**
- *  Tests getting a movie with an invalid id
+ *  Tests getting a movie with an invalid id.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ * 
+ *  @returns {void}
  */
 async function getInvalidMovie(lotr) {
 
@@ -74,9 +88,11 @@ async function getInvalidMovie(lotr) {
 }
 
 /**
- *  Tests getting five quotes
+ *  Tests getting five quotes.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
  */
 async function getFiveQuotes(lotr) {
 
@@ -89,9 +105,11 @@ async function getFiveQuotes(lotr) {
 }
 
 /**
- *  Tests getting a quote
+ *  Tests getting a quote.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
  */
 
 async function getOneQuote(lotr) {
@@ -103,9 +121,11 @@ async function getOneQuote(lotr) {
 }
 
 /**
- *  Tests getting a quote with an invalid id
+ *  Tests getting a quote with an invalid id.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
  */
 
 async function getInvalidQuote(lotr) {
@@ -117,9 +137,11 @@ async function getInvalidQuote(lotr) {
 }
 
 /**
- *  Tests getting five quotes from a movie
+ *  Tests getting five quotes from a movie.
  * 
- *  @param  {LOTR}  lotr 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
  */
 
 async function getMovieQuotes(lotr) {
