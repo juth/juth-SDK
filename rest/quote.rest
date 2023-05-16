@@ -1,0 +1,17 @@
+@hostname = https://the-one-api.dev/v2
+@auth = Authorization: Bearer <One API key goes here>
+
+# Get all quotes
+GET {{hostname}}/quote
+{{auth}}
+###
+
+# Get a quote from Smeagol
+GET {{hostname}}/quote/5cd96e05de30eff6ebcce7ee
+{{auth}}
+###
+
+# Get all quotes from The Fellowship of the Ring
+GET {{hostname}}/movie/5cd95395de30eff6ebccde5c/quote
+{{auth}}
+###

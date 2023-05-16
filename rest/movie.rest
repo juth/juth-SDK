@@ -1,0 +1,12 @@
+@hostname = https://the-one-api.dev/v2
+@auth = Authorization: Bearer <One API key goes here>
+
+# Get all movies
+GET {{hostname}}/movie
+{{auth}}
+###
+
+# Get The Hobbit movie
+GET {{hostname}}/movie/5cd95395de30eff6ebccde57
+{{auth}}
+###
