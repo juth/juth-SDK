@@ -1,3 +1,6 @@
+import { ObjectId } from 'mongodb';
+import InvalidIDError from './InvalidIDError.js';
+
 /**
  *  Provides access to One API's /quote endpoint.
  * 
@@ -19,7 +22,7 @@ class Quotes {
      * 
      *  @returns {Array} an array of quotes
      */
-    async all() {
+    async findAll() {
         return await this.oneAPI.get('/quote');
     }
 
@@ -30,9 +33,30 @@ class Quotes {
      * 
      *  @returns {Object} the quote or null if nothing was found
      */
-    async get(id) {
+    async findById(id) {
+
+        if(!ObjectId.isValid(id)) {
+            throw new InvalidIDError(id, '/quote/{id}');
+        }
+
         const quotes = await this.oneAPI.get(`/quote/${id}`);
         return (quotes.length === 1) ? quotes[0] : null;
+    }
+
+    /**
+     *  Finds all quotes for a movie and returns them.
+     * 
+     *  @param {string} id - the ID of the movie
+     * 
+     *  @returns {Array} an array of quotes
+     */
+    async findByMovieId(id) {
+
+        if(!ObjectId.isValid(id)) {
+            throw new InvalidIDError(id, '/movie/{id}/quote');
+        }
+
+        return await this.oneAPI.get(`/movie/${id}/quote`);
     }
 }
 

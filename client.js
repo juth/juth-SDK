@@ -25,19 +25,19 @@ async function main() {
     //  Create an LOTR SDK instance
     const lotr = new LOTR(ONE_API_KEY);
 
-    try {
-        await getAllMovies(lotr);
-        await getOneMovie(lotr);
-        await getInvalidMovie(lotr);
+    await getAllMovies(lotr);
+    await getOneMovie(lotr);
+    await getMovieWithWrongID(lotr);
+    await getMovieWithInvalidID(lotr);
 
-        await getFiveQuotes(lotr);
-        await getOneQuote(lotr);
-        await getInvalidQuote(lotr);
-        await getMovieQuotes(lotr);
-    }
-    catch(error) {
-        console.log(error.toString());
-    }
+    await getFiveQuotes(lotr);
+    await getOneQuote(lotr);
+    await getQuoteWithWrongID(lotr);
+    await getQuoteWithInvalidID(lotr);
+
+    await getMovieQuotes(lotr);
+    await getMovieQuotesWithWrongID(lotr);
+    await getMovieQuotesWithInvalidID(lotr);
 }
 
 /**
@@ -49,12 +49,20 @@ async function main() {
  */
 async function getAllMovies(lotr) {
 
-    console.log('Getting all movies...');
-    const movies = await lotr.getMovies();
-    for(let movie of movies) {
-        console.log(`id: ${movie._id}, name: ${movie.name}`);
+    try {
+        console.log('Getting all movies...');
+        const movies = await lotr.getMovies();
+        for(let movie of movies) {
+            console.log(`id: ${movie._id}, name: ${movie.name}`);
+        }
+        console.log('...done');
     }
-    console.log('...done');
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -66,10 +74,41 @@ async function getAllMovies(lotr) {
  */
 async function getOneMovie(lotr) {
     
-    console.log('Getting a movie...');
-    const movie = await lotr.getMovie('5cd95395de30eff6ebccde58');
-    console.log(movie);
-    console.log('...done');
+    try {
+        console.log('Getting a movie...');
+        const movie = await lotr.getMovie('5cd95395de30eff6ebccde58');
+        console.log(movie);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
+}
+
+/**
+ *  Tests getting a movie with the wrong id.
+ * 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ * 
+ *  @returns {void}
+ */
+async function getMovieWithWrongID(lotr) {
+
+    try {
+        console.log('Getting a movie with a wrong id...');
+        const movie = await lotr.getMovie('5cd95395de30eff6ebcc0000');
+        console.log(movie);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -79,12 +118,20 @@ async function getOneMovie(lotr) {
  * 
  *  @returns {void}
  */
-async function getInvalidMovie(lotr) {
+async function getMovieWithInvalidID(lotr) {
 
-    console.log('Getting a movie with a bad id...');
-    const movie = await lotr.getMovie('5cd95395de30eff6ebcc0000');
-    console.log(movie);
-    console.log('...done');
+    try {
+        console.log('Getting a movie with an invalid id...');
+        const movie = await lotr.getMovie('5cd95395de30eff6ebcc');
+        console.log(movie);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -96,12 +143,20 @@ async function getInvalidMovie(lotr) {
  */
 async function getFiveQuotes(lotr) {
 
-    console.log('Getting five quotes...');
-    const quotes = await lotr.getQuotes();
-    for(let quote of quotes.slice(0, 5)) {
-        console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+    try {
+        console.log('Getting five quotes...');
+        const quotes = await lotr.getQuotes();
+        for(let quote of quotes.slice(0, 5)) {
+            console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+        }
+        console.log('...done');
     }
-    console.log('...done');
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -111,13 +166,43 @@ async function getFiveQuotes(lotr) {
  *
  *  @returns {void}
  */
-
 async function getOneQuote(lotr) {
 
-    console.log('Getting a quote...');
-    const quote = await lotr.getQuote('5cd96e05de30eff6ebcce7ec');
-    console.log(quote);
-    console.log('...done');
+    try {
+        console.log('Getting a quote...');
+        const quote = await lotr.getQuote('5cd96e05de30eff6ebcce7ec');
+        console.log(quote);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
+}
+
+/**
+ *  Tests getting a quote with the wrong id.
+ * 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
+ */
+async function getQuoteWithWrongID(lotr) {
+
+    try {
+        console.log('Getting a quote with the wrong id...');
+        const quote = await lotr.getQuote('5cd96e05de30eff6ebcc0000');
+        console.log(quote);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -127,13 +212,20 @@ async function getOneQuote(lotr) {
  *
  *  @returns {void}
  */
+async function getQuoteWithInvalidID(lotr) {
 
-async function getInvalidQuote(lotr) {
-
-    console.log('Getting a quote with a bad id...');
-    const quote = await lotr.getQuote('5cd96e05de30eff6ebcc0000');
-    console.log(quote);
-    console.log('...done');
+    try {
+        console.log('Getting a quote with an invalid id...');
+        const quote = await lotr.getQuote('5cd96e05de30eff6ebcc');
+        console.log(quote);
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 
 /**
@@ -143,14 +235,72 @@ async function getInvalidQuote(lotr) {
  *
  *  @returns {void}
  */
-
 async function getMovieQuotes(lotr) {
 
-    console.log('Getting five quotes from The Fellowship of the Ring...');
-    const quotes = await lotr.getQuotes('5cd95395de30eff6ebccde5c');
-    for(let quote of quotes.slice(0, 5)) {
-        console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+    try {
+        console.log('Getting five quotes from The Fellowship of the Ring...');
+        const quotes = await lotr.getQuotes('5cd95395de30eff6ebccde5c');
+        for(let quote of quotes.slice(0, 5)) {
+            console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+        }
+        console.log('...done');
     }
-    console.log('...done');
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
+}
+
+/**
+ *  Tests getting movie quotes with the wrong ID.
+ * 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
+ */
+
+async function getMovieQuotesWithWrongID(lotr) {
+
+    try {
+        console.log('Getting movie quotes with the wrong ID...');
+        const quotes = await lotr.getQuotes('5cd95395de30eff6ebccffff');
+        for(let quote of quotes) {
+            console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+        }
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
+}
+
+/**
+ *  Tests getting quotes from a movie with an invalid ID.
+ * 
+ *  @param {LOTR} lotr - the LOTR SDK instance
+ *
+ *  @returns {void}
+ */
+async function getMovieQuotesWithInvalidID(lotr) {
+
+    try {
+        console.log('Getting movie quotes with an invalid ID...');
+        const quotes = await lotr.getQuotes('5cd95395de30eff6ebcc');
+        for(let quote of quotes) {
+            console.log(`id: ${quote._id}, name: ${quote.dialog}`);
+        }
+        console.log('...done');
+    }
+    catch(error) {
+        console.log(error.toString());
+    }
+    finally {
+        console.log('');
+    }
 }
 

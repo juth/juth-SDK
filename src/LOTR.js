@@ -5,6 +5,10 @@ import OneAPI from './util/OneAPI.js';
 /**
  *  Main SDK class for the One (Lord of the Rings) API.
  * 
+ *  Note: To add a new endpoint, create an access class
+ *  in the endpoints directory, and then add convenience
+ *  (wrapper) functions to this class.
+ * 
  *  @author Steve Juth
  */
 class LOTR {
@@ -30,7 +34,7 @@ class LOTR {
      *  @returns {Array} an array of movies
      */
     async getMovies() {
-        return this.movies.all();
+        return this.movies.findAll();
     }
 
     /**
@@ -41,7 +45,7 @@ class LOTR {
      *  @returns {Object} the movie
      */
     async getMovie(id) {
-        return this.movies.get(id);
+        return this.movies.findById(id);
     }
 
     /**
@@ -54,8 +58,8 @@ class LOTR {
      */
     async getQuotes(movieId) {
         return (movieId) ? 
-            this.movies.getQuotes(movieId) : 
-            this.quotes.all();
+            this.quotes.findByMovieId(movieId) : 
+            this.quotes.findAll();
     }
 
     /**
@@ -66,7 +70,7 @@ class LOTR {
      *  @returns {Object} the quote
      */
     async getQuote(id) {
-        return this.quotes.get(id);
+        return this.quotes.findById(id);
     }
 }
 
