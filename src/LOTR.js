@@ -1,6 +1,6 @@
-import Movies from './endpoints/Movies.js';
-import Quotes from './endpoints/Quotes.js';
-import OneAPI from './util/OneAPI.js';
+const Movies = require('./endpoints/Movies');
+const Quotes = require('./endpoints/Quotes');
+const OneAPI = require('./util/OneAPI');
 
 /**
  *  Main SDK class for the One (Lord of the Rings) API.
@@ -74,4 +74,4 @@ class LOTR {
     }
 }
 
-export default LOTR;
+module.exports = LOTR;

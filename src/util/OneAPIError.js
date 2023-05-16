@@ -26,4 +26,4 @@ class OneAPIError extends Error {
     }
 }
 
-export default OneAPIError;
+module.exports = OneAPIError;

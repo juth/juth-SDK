@@ -16,4 +16,4 @@ class InvalidIDError extends Error {
     }
 }
 
-export default InvalidIDError;
+module.exports = InvalidIDError;

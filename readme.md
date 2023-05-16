@@ -15,7 +15,7 @@ npm install juth-sdk
 To use the juth-SDK, you first need to create an instance of the `LOTR` class:
 
 ```javascript
-const { LOTR } = require('juth-sdk');
+const LOTR = require('juth-sdk');
 
 const lotr = new LOTR('<your API key>');
 ```

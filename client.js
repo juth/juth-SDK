@@ -6,11 +6,9 @@
 //  an .env file.
 //  ----------------------------------------------------
 
-import LOTR from './src/LOTR.js';
+require('dotenv').config()
 
-//  Read the One API key from the .env file
-import * as dotenv from 'dotenv'
-dotenv.config();
+const LOTR = require('./src/LOTR');
 const ONE_API_KEY = process.env.ONE_API_KEY;
 
 main();

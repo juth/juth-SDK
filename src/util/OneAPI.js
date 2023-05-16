@@ -1,5 +1,5 @@
-import axios from 'axios';
-import OneAPIError from './OneAPIError.js';
+const axios = require('axios');
+const OneAPIError = require('./OneAPIError');
 
 //  Prefix for all One API routes 
 const BASE_URL = 'https://the-one-api.dev/v2';
@@ -47,4 +47,4 @@ class OneAPI {
     }
 }
 
-export default OneAPI;
+module.exports = OneAPI;

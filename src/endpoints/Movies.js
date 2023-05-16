@@ -1,5 +1,5 @@
-import { ObjectId } from 'mongodb';
-import InvalidIDError from './InvalidIDError.js';
+const ObjectId = require('mongodb').ObjectId;
+const InvalidIDError = require('./InvalidIDError');
 
 /**
  *  Provides access to One API's /movie endpoint.
@@ -44,4 +44,4 @@ class Movies {
     }
 }
 
-export default Movies;
+module.exports = Movies;

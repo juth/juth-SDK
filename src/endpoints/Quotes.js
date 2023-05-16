@@ -1,5 +1,5 @@
-import { ObjectId } from 'mongodb';
-import InvalidIDError from './InvalidIDError.js';
+const ObjectId = require('mongodb').ObjectId;
+const InvalidIDError = require('./InvalidIDError');
 
 /**
  *  Provides access to One API's /quote endpoint.
@@ -60,4 +60,4 @@ class Quotes {
     }
 }
 
-export default Quotes;
+module.exports = Quotes;

@@ -9,7 +9,7 @@ The `LOTR` class serves as a wrapper around the One API endpoints. Currently, it
 Here is how to create an instance of the `LOTR` class:
 
 ```javascript
-const { LOTR } = require('juth-sdk');
+const LOTR = require('juth-sdk');
 
 const lotr = new LOTR('<your API key>');
 ```
