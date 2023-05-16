@@ -2,7 +2,7 @@
   "name": "juth-sdk",
   "version": "1.0.0",
   "description": "The Lord of the Rings SDK",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "client": "node ./client.js",
     "doc": "jsdoc -r src -d doc"
